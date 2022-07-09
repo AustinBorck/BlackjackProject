@@ -5,9 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-	List<Card> deck = new ArrayList<>(); 
-
+	private List<Card> deck = new ArrayList<>(52); 
+	
 	public Deck() {
+	}
+	public List<Card> makeDeck(){	
 		Suit[] suits = Suit.values();
 		Rank[] ranks = Rank.values();
 		for (Suit suit : suits) {
@@ -16,16 +18,25 @@ public class Deck {
 				deck.add(card);
 				}
 			}
+		return deck;
 		}
+	
 		public void shuffle() {
 			Collections.shuffle(deck);
 		}
+		
 		public int checkDeckSize() {
 			return deck.size();
 		}
-		public Card deal() {
+		
+		public Card dealCard() {
 			Card card = deck.remove(0);
 			return card;
 		}
+		
+		public void dealCard(Hand hand) {
+			
+		}
+		
 	}
 	

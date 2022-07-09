@@ -10,7 +10,6 @@ public class Card {
 		this.suit = suit;
 		this.rank = rank;
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(rank, suit);
