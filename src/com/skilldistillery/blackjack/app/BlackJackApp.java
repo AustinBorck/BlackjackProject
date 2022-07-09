@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import com.skilldistillery.blackjack.entities.BlackjackHand;
 import com.skilldistillery.blackjack.entities.Dealer;
-import com.skilldistillery.blackjack.entities.Deck;
 import com.skilldistillery.blackjack.entities.Player;
 
 public class BlackJackApp {
@@ -12,7 +11,6 @@ public class BlackJackApp {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		BlackJackApp app = new BlackJackApp();
-		Deck deck = new Deck();
 		app.showRules();
 		app.firstHands(scanner);
 		app.playAgain(scanner);
@@ -38,7 +36,6 @@ public class BlackJackApp {
 		Dealer dealer = new Dealer();
 		Player player = new Player();
 		dealer.grabDeck();
-		BlackjackHand bjHand = new BlackjackHand();
 		System.out.println("Enter any key to continue.");
 		scanner.next();
 		scanner.nextLine();
@@ -107,44 +104,44 @@ public class BlackJackApp {
 		boolean dealerHitting = true;
 		while (dealerHitting) {
 			if (dealer.getDealerHand() instanceof BlackjackHand && ((BlackjackHand)dealer.getDealerHand()).isBust()) {
-				System.out.println("The dealer flips the face down card...");
-				System.out.println(
-						"The dealers hand is: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
+				System.out.println("The dealer flips the facedown card...");
+				System.out.println("The dealers hand is: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
 				System.out.println("=================================");
 				System.out.println("== The dealer busted. You win! ==");
 				System.out.println("=================================");
-
 				dealerHitting = false;
+				
 			} if (dealer.getDealerHand() instanceof BlackjackHand && ((BlackjackHand)dealer.getDealerHand()).isBlackjack()) {
 				System.out.println("The dealer flips the face down card...");
-				System.out.println(
-						"The dealers hand is: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
+				System.out.println("The dealers hand is: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
 				System.out.println("=====================================");
 				System.out.println("== The dealer has 21. Dealer wins! ==");
 				System.out.println("=====================================");
-
 				dealerHitting = false;
 
 			}
-			if (dealer.getDealerHandValue() < 17) {
+			while (dealer.getDealerHandValue() < 17) {
+				System.out.println("\nThe dealer flips the face down card...");
 				System.out.println("The dealer chooses to hit...");
 				dealer.addDealerCard(dealer.dealHand());
-				System.out.println("The dealers hand is facedown card and " + dealer.getDealersSecondCard());
+				System.out.println("The dealers hand is: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue() + "\n");
 			}
-			if (dealer.getDealerHandValue() >= 17) {
+			 if (dealer.getDealerHandValue() >= 17 && dealer.getDealerHandValue() < 21) {
 				System.out.println("The dealer chooses to stay...");
-				System.out.println("The dealer flips the face down card...");
 				System.out.println(
-						"The dealers hand is " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
+						"The dealers hand is " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue() + "\n");
 			}
-			if (dealer.getDealerHandValue() > player.getHandValue() && dealer.getDealerHandValue() <= 21) {
+				
+			if (dealer.getDealerHandValue() > player.getHandValue() && dealer.getDealerHandValue() < 21) {
 				System.out.println("Your hand: " + player.getHand() + " Value: " + player.getHandValue());
 				System.out.println("=====================");
 				System.out.println("== The dealer won! ==");
 				System.out.println("=====================");
 				dealerHitting = false;
 
-			} if (player.getHandValue() > dealer.getDealerHandValue() && player.getHandValue() <= 21) {
+			} if (player.getHandValue() > dealer.getDealerHandValue() && player.getHandValue() < 21) {
+				System.out.println("Your hand: " + player.getHand() + " Value: " + player.getHandValue());
+				System.out.println("Dealers hand: " + dealer.getDealerHand() + " Value: " + dealer.getDealerHandValue());
 				System.out.println("==============");
 				System.out.println("== You won! ==");
 				System.out.println("==============");
@@ -165,14 +162,13 @@ public class BlackJackApp {
 	public void playAgain(Scanner scanner) {
 		System.out.println("Would you like to play again? Yes or No?");
 		String keepPlaying = scanner.nextLine();
-		BlackJackApp bjapp = new BlackJackApp();
 		switch (keepPlaying) {
 		case "YES":
 		case "Yes":
 		case "yes":
 		case "Y":
 		case "y":
-			bjapp.main(null);
+			main(null);
 			break;
 
 		case "NO":

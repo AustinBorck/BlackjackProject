@@ -44,12 +44,4 @@ private Deck deck;
 	public int getDealerHandValue() {
 		return bjHand.getHandValue();
 	}
-	public Card getDealersSecondCard() {
-		
-		for(int i = 1; i < bjHand.getHand().size(); i++) {
-			
-			return bjHand.getHand().get(i);
-		}
-		return null;
-	}
 }
