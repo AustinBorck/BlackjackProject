@@ -2,14 +2,17 @@ package com.skilldistillery.blackjack.entities;
 
 public class Dealer extends Player{
 private Deck deck;
-private Hand dealerhand;
+//private Hand dealerhand;
 	public Dealer() {
 	this.deck = new Deck();
-	this.dealerhand = new BlackjackHand(); 
+//	this.dealerhand = new BlackjackHand(); 
+	}
+	public void displayOneCard() {
+		System.out.println("The dealers has one card face up " + bjHand.getHand().get(1) + " Value: " + bjHand.getHand().get(1).getValue());
 	}
 	
-	public Dealer (Hand dealerhand) {
-		this.dealerhand = dealerhand;
+	public Dealer (BlackjackHand dealerhand) {
+		this.bjHand = dealerhand;
 	}
 	
 	public void grabDeck() {
@@ -26,27 +29,27 @@ private Hand dealerhand;
 	}
 	
 	public void addDealerFirstCard(Card cardToAdd) {
-		dealerhand.addCard(cardToAdd);
+		bjHand.addCard(cardToAdd);
 
 	}
 	public void addDealerCard(Card cardToAdd) {
-		dealerhand.addCard(cardToAdd);
+		bjHand.addCard(cardToAdd);
 	}
 	public Hand getDealerHand() {
-		return this.dealerhand;
+		return this.bjHand;
 	}
-	public void setDealerHand(Hand dealerhand) {
-		this.dealerhand = dealerhand;
+	public void setDealerHand(BlackjackHand dealerhand) {
+		this.bjHand = dealerhand;
 	}
 	public int getDealerHandValue() {
-		return dealerhand.getHandValue();
+		return bjHand.getHandValue();
 	}
 	public Card getDealersSecondCard() {
 		
-		for(int i = 1; i <= dealerhand.hand.size(); i++) {
+		for(int i = 1; i < bjHand.getHand().size(); i++) {
 			
-			return dealerhand.hand.get(i);
+			return bjHand.getHand().get(i);
 		}
-		return dealerhand.hand.get(1);
+		return null;
 	}
 }
