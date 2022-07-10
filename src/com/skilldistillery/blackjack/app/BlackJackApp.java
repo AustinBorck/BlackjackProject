@@ -137,19 +137,19 @@ public class BlackJackApp {
 				System.out.println("==============");
 				dealerHitting = false;
 
-			} else if (player.getHandValue() == dealer.getDealerHandValue()) {
+			}  if (player.getHandValue() == dealer.getDealerHandValue()) {
 				System.out.println("=================");
 				System.out.println("== It's a tie! ==");
 				System.out.println("=================");
 				dealerHitting = false;
 
-			} if (dealer.getDealerHand() instanceof BlackjackHand && ((BlackjackHand)dealer.getDealerHand()).isBlackjack()) {
+			} else if (dealer.getDealerHand() instanceof BlackjackHand && ((BlackjackHand)dealer.getDealerHand()).isBlackjack()) {
 				System.out.println("=====================================");
 				System.out.println("== The dealer has 21. Dealer wins! ==");
 				System.out.println("=====================================");
 				dealerHitting = false;
 
-			} if(player.getHand() instanceof BlackjackHand && ((BlackjackHand)player.getHand()).isBlackjack()) {
+			} else if(player.getHand() instanceof BlackjackHand && ((BlackjackHand)player.getHand()).isBlackjack()) {
 				System.out.println("==========================");
 				System.out.println("== You got 21. You win! ==");
 				System.out.println("==========================");
